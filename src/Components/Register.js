@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 
 export default function Register() {
@@ -15,19 +16,7 @@ export default function Register() {
   const Reg_submit = async (event) => {
     event.preventDefault();
     console.log(inputs)
-    data=(JSON.stringify({posts:inputs}));
-    fetch("http://localhost:3001/posts",{
-      method:'POST',
-      headers:{
-        'Accept':'application/json',
-        'Content-Type':'application.son'
-      },
-      body:data,
-      
-     
-    }).then((res)=>{
-      return res;
-    }).catch(err=>err);
+    axios.post("http://localhost:3001/posts",inputs)
   };
 
   return (
