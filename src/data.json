@@ -1,0 +1,14 @@
+[
+  {
+     "id":1,
+     "FistName":"Pratik",
+     "LastName":"Raval",
+     "BirthDate":"03-08-2000",
+     "Gender":"Male",
+     "Email":"pratik@gmail.com",
+     "PhoneNumber":"8849744926",
+     "Skills":"JS"
+  }
+
+
+]
