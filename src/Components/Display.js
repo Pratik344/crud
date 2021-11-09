@@ -1,19 +1,75 @@
-import React, { useState, useEffect } from "react";
 // import axios from "axios";
-import { Item } from "semantic-ui-react";
+import axios from "axios";
+import React, { useState, useEffect, Component } from "react";
+import NavBar from "./NavBar";
+import { Link } from 'react-router-dom';
+// import axios from "axios";
+// import { item } from "semantic-ui-react";
+<NavBar/>
 export default function Display() {
+
+
+  const componentDidMount=()=>{
+    axios.get('http://localhost:3001/profile').then(
+      res=>{
+        console.log("res:",res);
+        localStorage.getItem('email');
+        console.log("localstorege",localStorage);
+      },
+      err=>{
+        console.log(err);
+      }
+    )
+  }
+  
     const [data, setData] = useState([])
+    //const [check, setCheck] = useState();
     useEffect(()=>{
-        fetch("http://localhost:3001/posts").then((result)=>{
+        getList()
+
+    },[])
+    console.warn(data)
+    const getList=()=>{
+      console.log("heyy",localStorage);
+      if(localStorage.length===0)
+      {
+        alert("Please Login First")
+      }
+      else{
+      fetch("http://localhost:3001/posts").then((result)=>{
             result.json().then((resp)=>{
                 console.warn("result",resp)
                 setData(resp)
             })
         })
-    },[])
-    console.warn(data)
-  return (
+      }
+    }
+    const deleteRow=(id)=>{
+      if(localStorage.length===0)
+      {
+          alert("Please Login First")
+      }
+      else{
+      axios.delete(`http://localhost:3001/posts/${id}`).then(res=>{
+        console.log(res);
+        console.log(res.data);
+        getList()
+      })
+    }
+    }
+    const updateRow=(id)=>{
+      if(localStorage.length===0)
+      {
+          alert("Please Login First")
+      }
+      else{
+
+      }
+    }
+
     
+  return (
+<>
     <div className="container">
       <div className="row">
         <div className="col-12">
@@ -41,6 +97,7 @@ export default function Display() {
                     <th scope="col">Phone Number</th>
                     <th scope="col">Skill</th>
                     <th scope="col">ID</th>
+                    <th scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody className="customtable">
@@ -64,6 +121,8 @@ export default function Display() {
                     <td>{item.phoneNumber}</td>
                     <td>{item.skills}</td>
                     <td>{item.id}</td>
+                    <td><button type="button" className="btn btn-danger" onClick={() => deleteRow(item.id)}>Delete</button></td>
+                    <td><button type="button" class="btn btn-secondary" onClick={()=>updateRow(item.id)}><Link to="/update">Update</Link></button></td>
                   </tr>
   )
 }
@@ -74,5 +133,6 @@ export default function Display() {
         </div>
       </div>
     </div>
+  </>
   );
 }
