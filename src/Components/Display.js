@@ -132,7 +132,7 @@ export default function Display() {
                             class="btn btn-secondary"
                             // onClick={() => updateRow(item.id)}
                           >
-                            <Link to={`/update?id=${item.id}`}>Update</Link>
+                            <Link to={`/update/${item.id}`}>Update</Link>
                             
                           </button>
                         </td>

@@ -32,7 +32,7 @@ function App() {
           <Route exact path="/logout">
             <Logout/>
           </Route>
-          <Route exact path="/update/id">
+          <Route exact path="/update/:id">
             <Update/>
           </Route>
       </Switch>

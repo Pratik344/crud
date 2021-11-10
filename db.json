@@ -2,9 +2,9 @@
   "posts": [
     {
       "firstName": "pratik",
-      "lastName": "trivedi",
+      "lastName": "raval",
       "birthdayDate": "03-08-2000",
-      "Gender": "Female",
+      "Gender": "Male",
       "emailAddress": "karan@gmail.com",
       "phoneNumber": "8849744926",
       "skills": "JS",
