@@ -1,7 +1,20 @@
 // import React from 'react'
-import axios from "axios";
-import React, { useState, useEffect } from "react";
-export default function Update() {
+import React, { useEffect, useState } from "react";
+/* import { useParams } from "react-router"; */
+// import { useLocation } from "react-router";
+/* import { useParams } from 'react-router-dom'
+const { id } = useParams(); */
+// console.log("id: ", id);
+
+export default function Update(props) {
+  console.log("props: ", props);
+  // const {search}=useLocation()
+  // const searchParms=new URLSearchParams(search)
+  // const id = searchParms.get('id')
+  const { id} = props.match;
+  console.log("id",id);
+  // console.log("path: ", path);
+
   const [inputs, setInputs] = useState({});
 
   useEffect(() => {
@@ -14,11 +27,17 @@ export default function Update() {
     //   alert("Please Login First")
     // }
     // axios.fetch;
-    fetch("http://localhost:3001/posts")
+    // console.log(uid);
+    console.log('id: ', id);
+    // console.log("props.match.params.id: ", props.match.params.id);
+    fetch(`http://localhost:3001/posts/${id}`)
+    
       .then((res) => res.json())
       .then((inputs) => {
-        console.log('inputs: ', inputs);
-        setInputs(inputs[0]);
+        console.log("inputs: ", inputs);
+        setInputs(inputs);
+        console.log("inputs: ", inputs);
+        // console.log(inputs)
       });
   };
   return (
