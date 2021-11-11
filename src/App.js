@@ -8,6 +8,8 @@ import NavBar from "./Components/NavBar";
 import Login from "./Components/Login";
 import Logout from "./Components/Logout";
 import Update from "./Components/Update";
+// import Profile from "./Components/Profile";
+import ProfileContainer from "./Containers/ProfileContainer"
 // import { Fragment } from "react";
 // import Register from './Components/Register';
 
@@ -34,6 +36,9 @@ function App() {
           </Route>
           <Route exact path="/update/:id">
             <Update/>
+          </Route>
+          <Route exact path="/profile">
+            <ProfileContainer/>
           </Route>
       </Switch>
         {/* <Homepage/> */}

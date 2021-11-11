@@ -1,16 +1,17 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 export default function NavBar() {
-  const logout=()=>{
+  const state = useSelector((state) => state.profileName);
+  console.log("state: ", state);
 
+  const logout = () => {
     localStorage.clear();
     console.log(localStorage);
-  }
+  };
 
   return (
-   
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
@@ -31,25 +32,40 @@ export default function NavBar() {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link className="nav-link active" aria-current="page" to="/login">
+                <Link
+                  className="nav-link active"
+                  aria-current="page"
+                  to="/login"
+                >
                   Login
-                </Link >
+                </Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/register">
                   Register
-                </Link >
+                </Link>
               </li>
-              
+              <li className="nav-item">
+                <Link className="nav-link" to="/profile">
+                  Profile
+                </Link>
+              </li>
             </ul>
             <form className="d-flex">
+              <Link className="navbar-brand" to="/Profile">
+                {state.profileData}
+              </Link>
               {/* <input
                 className="form-control me-2"
                 type="search"
                 placeholder="Search"
                 aria-label="Search"
               /> */}
-              <button className="btn btn-outline-success" type="submit" onClick={logout}>
+              <button
+                className="btn btn-outline-success"
+                type="submit"
+                onClick={logout}
+              >
                 Logout
               </button>
             </form>
@@ -57,6 +73,5 @@ export default function NavBar() {
         </div>
       </nav>
     </div>
-    
   );
 }
