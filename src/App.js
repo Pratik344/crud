@@ -19,7 +19,7 @@ function App() {
       <NavBar/>
     <div className="App">
       <>
-      {/* <Switch>
+      <Switch>
           <Route exact path="/login">
             <Login/>
           </Route>
@@ -32,11 +32,14 @@ function App() {
           <Route exact path="/logout">
             <Logout/>
           </Route>
-      </Switch> */}
+          <Route exact path="/update/:id">
+            <Update/>
+          </Route>
+      </Switch>
         {/* <Homepage/> */}
         {/* <Login/> */}
         {/* <Register/> */}
-        <Update/>
+        {/* <Update/> */}
 
         
       </>

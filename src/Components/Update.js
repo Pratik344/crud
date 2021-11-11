@@ -1,26 +1,36 @@
-// import React from 'react'
 import axios from "axios";
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+
 export default function Update() {
   const [inputs, setInputs] = useState({});
+  let { id } = useParams();
 
   useEffect(() => {
     getList();
   }, []);
   const getList = () => {
-    // console.log("heyy",localStorage);
-    // if(localStorage.length===0)
-    // {
-    //   alert("Please Login First")
-    // }
-    // axios.fetch;
-    fetch("http://localhost:3001/posts")
+    fetch(`http://localhost:3001/posts/${id}`)
       .then((res) => res.json())
       .then((inputs) => {
-        console.log('inputs: ', inputs);
-        setInputs(inputs[0]);
+        setInputs(inputs);
       });
   };
+  const handleChange = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setInputs((values) => ({ ...values, [name]: value }));
+  };
+  const onClickUpdate = async(e)=>{
+        e.preventDefault();
+        console.log(inputs)
+        await axios.put(`http://localhost:3001/posts/${id}`,inputs)
+        .then((response)=>{})
+        .catch(function(err){
+            alert(err.error)
+        })
+  }
+
   return (
     <div>
       <section className="vh-100 gradient-custom">
@@ -44,7 +54,7 @@ export default function Update() {
                             id="firstName"
                             className="form-control form-control-lg"
                             value={inputs.firstName}
-                            // onChange={handleChange}
+                            onChange={handleChange}
                             name="firstName"
                           />
                           <label className="form-label" for="firstName">
@@ -59,7 +69,7 @@ export default function Update() {
                             id="lastName"
                             className="form-control form-control-lg"
                             value={inputs.lastName}
-                            // onChange={handleChange}
+                            onChange={handleChange}
                             name="lastName"
                           />
                           <label className="form-label" for="lastName">
@@ -77,7 +87,7 @@ export default function Update() {
                             className="form-control form-control-lg"
                             id="birthdayDate"
                             value={inputs.birthdayDate}
-                            // onChange={handleChange}
+                            onChange={handleChange}
                             name="birthdayDate"
                           />
                           <label for="birthdayDate" className="form-label">
@@ -95,7 +105,7 @@ export default function Update() {
                             name="inlineRadioOptions"
                             id="Gender"
                             value="Female"
-                            // onChange={handleChange}
+                            onChange={handleChange}
                             name="Gender"
                           />
                           <label
@@ -113,7 +123,7 @@ export default function Update() {
                             name="inlineRadioOptions"
                             id="Gender"
                             value="Male"
-                            // onChange={handleChange}
+                            onChange={handleChange}
                             name="Gender"
                           />
                           <label className="form-check-label" for="maleGender">
@@ -128,7 +138,7 @@ export default function Update() {
                             name="inlineRadioOptions"
                             id="Gender"
                             value="Other"
-                            // onChange={handleChange}
+                            onChange={handleChange}
                             name="Gender"
                           />
                           <label className="form-check-label" for="otherGender">
@@ -146,7 +156,7 @@ export default function Update() {
                             id="emailAddress"
                             className="form-control form-control-lg"
                             value={inputs.emailAddress}
-                            // onChange={handleChange}
+                            onChange={handleChange}
                             name="emailAddress"
                           />
                           <label className="form-label" for="emailAddress">
@@ -161,7 +171,7 @@ export default function Update() {
                             id="phoneNumber"
                             className="form-control form-control-lg"
                             value={inputs.phoneNumber}
-                            // onChange={handleChange}
+                            onChange={handleChange}
                             name="phoneNumber"
                           />
                           <label className="form-label" for="phoneNumber">
@@ -176,7 +186,7 @@ export default function Update() {
                         <select
                           className="select form-control-lg"
                           value={inputs.skills}
-                          // onChange={handleChange}
+                          onChange={handleChange}
                           name="skills"
                         >
                           <option value="1" disabled>
@@ -202,9 +212,9 @@ export default function Update() {
                       <input
                         className="btn btn-primary btn-lg"
                         type="submit"
-                        value="Submit"
+                        value="Update"
                         id="mainInput"
-                        // onClick={Reg_submit}
+                        onClick={onClickUpdate}
                       />
                     </div>
                   </form>
