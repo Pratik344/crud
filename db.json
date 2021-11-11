@@ -5,20 +5,20 @@
       "lastName": "raval",
       "birthdayDate": "03-08-2000",
       "Gender": "Male",
-      "emailAddress": "karan@gmail.com",
+      "emailAddress": "pratik@gmail.com",
       "phoneNumber": "8849744926",
       "skills": "JS",
       "id": 1
     },
     {
-      "firstName": "asda",
-      "lastName": "raval",
-      "birthdayDate": "asdfas",
+      "firstName": "karan",
+      "lastName": "trivedi",
+      "birthdayDate": "03-08-2000",
       "Gender": "Female",
       "emailAddress": "karan@gmail.com",
       "phoneNumber": "8849744926",
-      "skills": "Python",
-      "id": 2
+      "id": 2,
+      "skills": "PHP"
     }
   ],
   "comments": [],
