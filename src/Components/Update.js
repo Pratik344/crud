@@ -21,15 +21,16 @@ export default function Update() {
     const value = event.target.value;
     setInputs((values) => ({ ...values, [name]: value }));
   };
-  const onClickUpdate = async(e)=>{
-        e.preventDefault();
-        console.log(inputs)
-        await axios.put(`http://localhost:3001/posts/${id}`,inputs)
-        .then((response)=>{})
-        .catch(function(err){
-            alert(err.error)
-        })
-  }
+  const onClickUpdate = async (e) => {
+    e.preventDefault();
+    console.log(inputs);
+    await axios
+      .put(`http://localhost:3001/posts/${id}`, inputs)
+      .then((response) => {})
+      .catch(function (err) {
+        alert(err.error);
+      });
+  };
 
   return (
     <div>

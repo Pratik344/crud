@@ -50,6 +50,11 @@ export default function NavBar() {
                   Profile
                 </Link>
               </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/productList">
+                  Product List
+                </Link>
+              </li>
             </ul>
             <form className="d-flex">
               <Link className="navbar-brand" to="/Profile">

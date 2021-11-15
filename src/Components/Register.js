@@ -10,7 +10,6 @@ export default function Register() {
     const value = event.target.value;
     setInputs((values) => ({ ...values, [name]: value }));
   };
-  var data;
 
   const Reg_submit = async (event) => {
     event.preventDefault();

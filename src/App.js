@@ -9,47 +9,48 @@ import Login from "./Components/Login";
 import Logout from "./Components/Logout";
 import Update from "./Components/Update";
 // import Profile from "./Components/Profile";
-import ProfileContainer from "./Containers/ProfileContainer"
+import ProfileContainer from "./Containers/ProfileContainer";
+import ProductList from "./Components/ProductList";
 // import { Fragment } from "react";
 // import Register from './Components/Register';
 
 function App() {
   return (
     <>
-    
       <Router>
-      <NavBar/>
-    <div className="App">
-      <>
-      <Switch>
-          <Route exact path="/login">
-            <Login/>
-          </Route>
-          <Route exact path="/register">
-            <Register/>
-          </Route>
-          <Route exact path="/">
-            <Display/>
-          </Route>
-          <Route exact path="/logout">
-            <Logout/>
-          </Route>
-          <Route exact path="/update/:id">
-            <Update/>
-          </Route>
-          <Route exact path="/profile">
-            <ProfileContainer/>
-          </Route>
-      </Switch>
-        {/* <Homepage/> */}
-        {/* <Login/> */}
-        {/* <Register/> */}
-        {/* <Update/> */}
-
-        
-      </>
-    </div>
-    </Router>
+        <NavBar />
+        <div className="App">
+          <>
+            <Switch>
+              <Route exact path="/login">
+                <Login />
+              </Route>
+              <Route exact path="/register">
+                <Register />
+              </Route>
+              <Route exact path="/">
+                <Display />
+              </Route>
+              <Route exact path="/logout">
+                <Logout />
+              </Route>
+              <Route exact path="/update/:id">
+                <Update />
+              </Route>
+              <Route exact path="/profile">
+                <ProfileContainer />
+              </Route>
+              <Route exact path="/productList">
+                <ProductList/>
+              </Route>
+            </Switch>
+            {/* <Homepage/> */}
+            {/* <Login/> */}
+            {/* <Register/> */}
+            {/* <Update/> */}
+          </>
+        </div>
+      </Router>
     </>
   );
 }

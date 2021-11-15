@@ -10,25 +10,25 @@ export default function Login() {
     console.log(email);
     console.log(pass);
     var yes = document.getElementById("term1");
-    if (yes.checked == true) {
+    if (yes.checked === true) {
       // console.log("Login Successfully")
     } else {
       alert("Please check the checkbox");
     }
-    if (email.length == 0 && pass.length == 0) {
+    if (email.length === 0 && pass.length === 0) {
       alert("Please Enter Email & Password");
     } else {
-      if (pass.length == 0) {
+      if (pass.length === 0) {
         alert("Please Enter the Password");
-      } else if (email.length == 0) {
+      } else if (email.length === 0) {
         alert("Please Enter the Email");
       }
     }
 
     if (
-      (email == "demo@gmail.com" && pass == "12345") ||
-      (email == "samcom@gmail.com" && pass == "123") ||
-      (email == "samcomtechnobrains@gmail.com" && pass == "sam123@")
+      (email === "demo@gmail.com" && pass === "12345") ||
+      (email === "samcom@gmail.com" && pass ==="123") ||
+      (email === "samcomtechnobrains@gmail.com" && pass === "sam123@")
     ) {
       const data = { email, pass };
       console.log(data);
@@ -54,7 +54,7 @@ export default function Login() {
   };
   const handleOnChangeT1 = (event) => {
     var yes = document.getElementById("term1");
-    if (yes.checked == true) {
+    if (yes.checked === true) {
       alert(
         "Terms and Conditions General Site UsageLast Revised: December 16, 2013 Welcome to www.lorem-ipsum.info. This site is provided as a service to our visitors and may be used for informational purposes only. Because the Terms and Conditions contain legal obligations, please read them carefully. 1. YOUR AGREEMENT By using this Site, you agree to be bound by, and to comply with, these Terms and Conditions. If you do not agree to these Terms and Conditions, please do not use this site. PLEASE NOTE: We reserve the right, at our sole discretion, to change, modify or otherwise alter these Terms and Conditions at any time. Unless otherwise indicated, amendments will become effective immediately. Please review these Terms and Conditions periodically. Your continued use of the Site following the posting of changes and/or modifications will constitute your acceptance of the revised Terms and Conditions and the reasonableness of these standards for notice of changes. For your information, this page was last updated as of the date at the top of these terms and conditions. 2. PRIVACY Please review our Privacy Policy, which also governs your visit to this Site, to understand our practices."
       );

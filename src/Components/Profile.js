@@ -4,16 +4,14 @@ import { useDispatch } from "react-redux";
 import { addToUserName } from "../Services/Action/Action";
 
 export default function Profile(props) {
-    // console.log('home props: ', props);
-    
+  // console.log('home props: ', props);
 
+  const [Username, setUserName] = useState("");
 
-    const [Username, setUserName] = useState("")
-
-    const dispatch = useDispatch()
-    const handleOnChange = (event) => {
-        setUserName(event.target.value);
-      };
+  const dispatch = useDispatch();
+  const handleOnChange = (event) => {
+    setUserName(event.target.value);
+  };
   return (
     <div>
       <div className="form-group">
@@ -47,16 +45,11 @@ export default function Profile(props) {
         type="button"
         class="btn btn-primary"
         onClick={() => {
-            dispatch(addToUserName(Username))
+          dispatch(addToUserName(Username));
         }}
       >
-         
         Add Name
       </button>
-      
-      
     </div>
-
-    
   );
 }
