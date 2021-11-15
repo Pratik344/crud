@@ -133,7 +133,6 @@ export default function Display() {
                             // onClick={() => updateRow(item.id)}
                           >
                             <Link to={`/update/${item.id}`}>Update</Link>
-                            
                           </button>
                         </td>
                       </tr>

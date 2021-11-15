@@ -1,16 +1,6 @@
 {
   "posts": [
     {
-      "firstName": "pratik",
-      "lastName": "raval",
-      "birthdayDate": "03-08-2000",
-      "Gender": "Male",
-      "emailAddress": "pratik@gmail.com",
-      "phoneNumber": "8849744926",
-      "skills": "JS",
-      "id": 1
-    },
-    {
       "firstName": "karan",
       "lastName": "trivedi",
       "birthdayDate": "03-08-2000",
@@ -19,6 +9,16 @@
       "phoneNumber": "8849744926",
       "id": 2,
       "skills": "PHP"
+    },
+    {
+      "firstName": "karan",
+      "lastName": "trivedi",
+      "birthdayDate": "03-08-2000",
+      "Gender": "Male",
+      "emailAddress": "karan@gmail.com",
+      "phoneNumber": "8849744926",
+      "skills": "Python",
+      "id": 3
     }
   ],
   "comments": [],
