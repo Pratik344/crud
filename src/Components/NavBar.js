@@ -1,9 +1,13 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-
+import { addToCart } from "../Services/Action/addToCartAction";
+import { useState } from "react";
 export default function NavBar() {
   const state = useSelector((state) => state.profileName);
+  const cart = useSelector((cart)=>cart.addToCart)  
+  console.log('cart: ', cart);
+  
   console.log("state: ", state);
 
   const logout = () => {
@@ -11,9 +15,10 @@ export default function NavBar() {
     console.log(localStorage);
   };
 
+
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <nav className="navbar navbar-expand-lg navbar-fixed-top navbar-light bg-light navbar-fixed-top">
         <div className="container-fluid">
           <Link className="navbar-brand" to="/">
             Home
@@ -55,10 +60,20 @@ export default function NavBar() {
                   Product List
                 </Link>
               </li>
+
+              
             </ul>
             <form className="d-flex">
               <Link className="navbar-brand" to="/Profile">
                 {state.profileData}
+              </Link>
+              <Link to="/cart">
+              <div>
+                <div className="add-to-cart">
+                  <span className="cart-count">{cart.length}</span>
+                  <img src="https://static.vecteezy.com/system/resources/thumbnails/000/496/007/small/Ecommerce_998.jpg" />
+                </div>
+              </div>
               </Link>
               {/* <input
                 className="form-control me-2"

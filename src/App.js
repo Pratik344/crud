@@ -11,6 +11,8 @@ import Update from "./Components/Update";
 // import Profile from "./Components/Profile";
 import ProfileContainer from "./Containers/ProfileContainer";
 import ProductList from "./Components/ProductList";
+import Cart from "./Components/Cart";
+// import Cart from "./Components/Cart";
 // import { Fragment } from "react";
 // import Register from './Components/Register';
 
@@ -42,6 +44,9 @@ function App() {
               </Route>
               <Route exact path="/productList">
                 <ProductList/>
+              </Route>
+              <Route exact path="/cart">
+                <Cart/>
               </Route>
             </Switch>
             {/* <Homepage/> */}

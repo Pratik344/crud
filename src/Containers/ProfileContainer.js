@@ -1,13 +1,12 @@
 import Profile from "../Components/Profile";
 import { connect } from "react-redux";
-import { addToUserName } from "../Services/Action/Action";
+import {addToCart} from "../Services/Action/addToCartAction";
 
 const mapStateToProps = (state) => ({
-  profileData: state.profileName.profileData,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  addToUserName: (data) => dispatch(addToUserName(data)),
+  addToCartHandler:data=>dispatch(addToCart(data))
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);
 
