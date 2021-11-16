@@ -36,3 +36,24 @@
     transform: rotate(360deg);
   }
 }
+.add-to-cart img {
+  width: 50px;
+  /* position: absolute; */
+  right: 150%;
+  top: 1%;
+}
+.cart-count {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  right: 94px;
+  top: 16px;
+  z-index: 24;
+  background-color: red;
+  padding: 8px;
+  justify-content: center;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  color: #fff;
+}

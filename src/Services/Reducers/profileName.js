@@ -8,7 +8,7 @@ export default function profileName(state = initialState, action) {
     case ADD_TO_USERNAME:
       // console.warn("reducer",action)
       return {...state,  profileData: action.payload }
-    default:
+      default:
       return state;
   }
 }
