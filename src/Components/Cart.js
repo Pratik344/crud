@@ -3,12 +3,17 @@ import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
+import DeleteIcon from "@mui/icons-material/Delete";
+import IconButton from "@mui/material/IconButton";
 import React from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
+import { removeFromCart } from "../Services/Action/removeFromCartAction";
 export default function Cart() {
   const cart = useSelector((cart) => cart.addToCart);
+  const updateCart = useSelector((cart) => cart.removeFromCart);
+  console.log('updateCart: ', updateCart);
   const dispatch = useDispatch();
   const [quantity, setQuantity] = useState(1);
   console.log("cartjs: ", cart);
@@ -50,10 +55,18 @@ export default function Cart() {
                   placeholder={item.cardData.quantity}
                   disabled
                 />
-                <button >+</button>
+                <button>+</button>
               </TableCell>
               <TableCell align="left">
                 {<span>₹ {item.cardData.price}</span>}
+              </TableCell>
+              <TableCell>
+                <IconButton
+                  aria-label="delete"
+                  onClick={() => dispatch(removeFromCart(item.cardData.id,cart))}
+                >
+                  <DeleteIcon />
+                </IconButton>
               </TableCell>
             </TableRow>
           ))}

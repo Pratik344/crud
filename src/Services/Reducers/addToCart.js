@@ -7,5 +7,7 @@ export default function addToCart(state = [], action) {
     case ADD_TO_CART:
       // console.warn("reducer",action)
       return [...state, { cardData: action.payload }];
+    default:
+      return state;
   }
 }
