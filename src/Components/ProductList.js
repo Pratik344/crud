@@ -7,6 +7,7 @@ import Button from "@material-ui/core/Button";
 import { addToCart } from "../Services/Action/addToCartAction";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import { checkIntoCart } from "../Services/Action/checkInToCartAction";
 
 
 export default function ProductList(props) {
@@ -1027,6 +1028,7 @@ export default function ProductList(props) {
               color="success"
               onClick={() => {
                 dispatch(addToCart(item));
+                // dispatch(checkIntoCart(item.id));
               }}
             >
               Add To Cart
