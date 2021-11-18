@@ -8,16 +8,18 @@ import IconButton from "@mui/material/IconButton";
 import React from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { useState } from "react";
+import { useEffect } from "react";
 import { removeFromCart } from "../Services/Action/removeFromCartAction";
+import {increment} from "../Services/Action/handleIncrementAction"
+import { decrement } from "../Services/Action/handleDecrementAction";
 export default function Cart() {
   const cart = useSelector((cart) => cart.addToCart);
-  const updateCart = useSelector((cart) => cart.removeFromCart);
+  const updateCart=useSelector((updateCart)=>updateCart.removeFromCart)
   console.log('updateCart: ', updateCart);
   const dispatch = useDispatch();
-  const [quantity, setQuantity] = useState(1);
-  console.log("cartjs: ", cart);
-
+  useEffect(() => {
+    dispatch({ type: "GET_TOTAL" });
+  },[cart.cardData]);
   return (
     <div>
       <Table className="">
@@ -32,9 +34,9 @@ export default function Cart() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {cart.map((item) => (
+          {cart.cardData.map((item) => (
             <TableRow>
-              <TableCell align="left">{item.cardData.id}</TableCell>
+              <TableCell align="left">{item.id}</TableCell>
               <TableCell align="left">
                 <img
                   style={{
@@ -43,27 +45,26 @@ export default function Cart() {
                     border: "2px solid",
                     "border-radius": 50,
                   }}
-                  src={item.cardData.img}
+                  src={item.img}
                 />
               </TableCell>
-              <TableCell align="left">{item.cardData.title}</TableCell>
-              <TableCell align="left">{item.cardData.author}</TableCell>
+              <TableCell align="left">{item.title}</TableCell>
+              <TableCell align="left">{item.author}</TableCell>
               <TableCell>
-                <button>-</button>
+                <button onClick={()=>dispatch(decrement(item.id))}>-</button>
                 <input
                   type="text"
-                  placeholder={item.cardData.quantity}
-                  disabled
+                  placeholder={item.quantity}
                 />
-                <button>+</button>
+                <button onClick={()=>dispatch(increment(item.id))} >+</button>
               </TableCell>
               <TableCell align="left">
-                {<span>₹ {item.cardData.price}</span>}
+                {<span>₹ {item.price}</span>}
               </TableCell>
               <TableCell>
                 <IconButton
                   aria-label="delete"
-                  onClick={() => dispatch(removeFromCart(item.cardData.id,cart))}
+                  onClick={() => dispatch(removeFromCart(item.id))}
                 >
                   <DeleteIcon />
                 </IconButton>
@@ -72,6 +73,12 @@ export default function Cart() {
           ))}
         </TableBody>
       </Table>
+      <div className="card-total">
+              <h3>
+                card total: <span> {cart.totalAmount}₹ </span>
+              </h3>
+              <button>CheckOut</button>
+            </div>
     </div>
   );
 }
