@@ -10,9 +10,29 @@ const initialState = {
 };
 export default function addToCart(state = initialState, action) {
   switch (action.type) {
+    // case ADD_TO_CART:
+    //   return { ...state, cardData: [...state.cardData, action.payload] };
     case ADD_TO_CART:
-      return { ...state, cardData: [...state.cardData, action.payload] };
+      const item = state.cardData.find((product) => product.id === action.payload.id);
 
+      if (item) {
+        return {
+          ...state,
+          cardData: state.cardData.map((item) =>
+            item.id === action.payload.id
+              ? {
+                  ...item,
+                  quantity: item.quantity + 1,
+                }
+              : item
+          ),
+        };
+      }
+
+      return {
+        ...state,
+        cardData: [...state.cardData, action.payload],
+      };
 
     case REMOVE_FROM_CART:
       return {
@@ -56,6 +76,7 @@ export default function addToCart(state = initialState, action) {
         }
       );
       return { ...state, totalItem, totalAmount };
+    
     default:
       return state;
   }
